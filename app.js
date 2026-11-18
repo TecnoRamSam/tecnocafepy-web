@@ -1,5 +1,7 @@
 (function () {
   var WA = "595986217368";
+  // Access Key pública de Web3Forms (marv@tecnocafepy.com): cada consulta llega por correo a Julio.
+  var W3F_KEY = "6d358c96-195b-49ab-817f-64cf9b0b71a8";
   var modal = document.getElementById("modal");
   var form = document.getElementById("f");
   var err = document.getElementById("err");
@@ -43,9 +45,37 @@
       "¿Vende café hoy?: " + vende,
       "Cafés por día: " + (cafes || "no sé / no aplica")
     ];
+    if (W3F_KEY && !d.get("botcheck")) {
+      try {
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({
+            access_key: W3F_KEY,
+            subject: "Consulta web TecnoCafe: " + interes,
+            from_name: "Web TecnoCafe",
+            "Consulta sobre": interes,
+            Nombre: nombre, "Teléfono": tel, Ciudad: ciudad,
+            "¿Vende café hoy?": vende, "Cafés por día": cafes || "no sé / no aplica"
+          }),
+          keepalive: true
+        });
+      } catch (x) {}
+    }
     var url = "https://wa.me/" + WA + "?text=" + encodeURIComponent(lines.join("\n"));
     window.open(url, "_blank", "noopener");
     form.reset();
     close();
   });
+
+  // Calculadora orientativa
+  var cp=document.getElementById("c-precio"), cc=document.getElementById("c-costo"), cd=document.getElementById("c-dia"), co=document.getElementById("c-out");
+  function num(el){return parseFloat((el.value||"").replace(/\./g,"").replace(",","."))||0;}
+  function calc(){
+    var p=num(cp), c=num(cc), d=num(cd);
+    if(!p||!d){co.textContent="Completá los tres datos y te mostramos el margen aproximado del mes.";return;}
+    var m=(p-c)*d*30;
+    co.textContent=(m>0?"Margen aproximado por mes: Gs ":"Con esos números no hay margen: Gs ")+Math.round(m).toLocaleString("es-PY")+" (30 días, antes de gastos).";
+  }
+  [cp,cc,cd].forEach(function(el){el.addEventListener("input",calc);});
 })();
