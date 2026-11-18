@@ -14,11 +14,18 @@
     interes = text || "Consulta general";
     interesEl.textContent = "Consulta sobre: " + interes;
     err.hidden = true;
+    showForm(true);
     modal.hidden = false;
     var first = form.querySelector("input");
     if (first) first.focus();
   }
   function close() { modal.hidden = true; }
+  var thanks = document.getElementById("gracias"), waGo = document.getElementById("wa-go");
+  var mt = document.getElementById("mt");
+  function showForm(on) {
+    form.hidden = !on; interesEl.hidden = !on; mt.hidden = !on; thanks.hidden = on;
+  }
+  var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   document.addEventListener("click", function (e) {
     var t = e.target.closest("[data-consulta]");
@@ -63,9 +70,14 @@
       } catch (x) {}
     }
     var url = "https://wa.me/" + WA + "?text=" + encodeURIComponent(lines.join("\n"));
-    window.open(url, "_blank", "noopener");
     form.reset();
-    close();
+    if (isMobile) {
+      window.open(url, "_blank", "noopener");
+      close();
+    } else {
+      waGo.href = url;
+      showForm(false);
+    }
   });
 
   // Calculadora orientativa
