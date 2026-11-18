@@ -10,6 +10,7 @@
 <meta property="og:description" content="Venta, alquiler, repuestos y servicio técnico de máquinas de café para oficinas, restaurantes y comercios.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tecnocafepy.com/">
+<meta property="og:locale" content="es_PY">
 <meta name="theme-color" content="#1b130e">
 <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">
@@ -27,7 +28,7 @@
     "addressLocality": "Fernando de la Mora",
     "addressCountry": "PY"
   },
-  "sameAs": ["https://www.instagram.com/tecnocafepy/"]
+  "sameAs": ["https://www.instagram.com/tecnocafepy/","https://www.facebook.com/profile.php?id=61564853818471"]
 }
 </script>
 </head>
@@ -38,6 +39,7 @@
     <a class="brand" href="#inicio" aria-label="TecnoCafe, inicio">Tecno<span>Cafe</span></a>
     <nav id="nav" aria-label="Principal">
       <a href="#que-hacemos">Qué hacemos</a>
+      <a href="#cuenta">La cuenta</a>
       <a href="#maquinas">Máquinas</a>
       <a href="#agua">Agua</a>
       <a href="#repuestos">Repuestos</a>
@@ -115,6 +117,40 @@
   </div>
 </section>
 
+<section id="cuenta" class="sec">
+  <div class="wrap two">
+    <div>
+      <h2>La cuenta del café</h2>
+      <p>Un frasco de café soluble deja un margen chico por taza y hay que atender y reponer todo el día. Una máquina bien elegida sirve más rápido, siempre igual, y se paga sola con pocas ventas diarias.</p>
+      <p>Probá con tus números: poné cuánto cobrarías la taza y cuántas vendés por día.</p>
+    </div>
+    <form class="calc" id="calc" onsubmit="return false">
+      <label>Precio de venta por taza (Gs)
+        <input id="c-precio" inputmode="numeric" placeholder="Ej: 6000">
+      </label>
+      <label>Costo por taza (Gs)
+        <input id="c-costo" inputmode="numeric" placeholder="Ej: 2000">
+      </label>
+      <label>Tazas por día
+        <input id="c-dia" inputmode="numeric" placeholder="Ej: 15">
+      </label>
+      <p class="calc-out" id="c-out" aria-live="polite">Completá los tres datos y te mostramos el margen aproximado del mes.</p>
+      <p class="small">Es una cuenta orientativa con tus propios datos, no una promesa de ganancia.</p>
+    </form>
+  </div>
+</section>
+
+<section class="sec alt">
+  <div class="wrap">
+    <h2>¿Para qué negocio?</h2>
+    <p class="sub">Si ya tenés local y personal, sumar café es el paso más fácil.</p>
+    <ul class="tags big" aria-label="Tipos de negocio">
+      <li>Cafeterías</li><li>Oficinas</li><li>Chiperías y paradores</li><li>Hoteles pequeños</li>
+      <li>Restaurantes</li><li>Heladerías y confiterías</li><li>Panaderías</li><li>Locales que aún no venden café</li>
+    </ul>
+  </div>
+</section>
+
 <section id="maquinas" class="sec">
   <div class="wrap">
     <h2>Máquinas de café</h2>
@@ -146,7 +182,7 @@
   <div class="wrap two">
     <div>
       <h2>Repuestos para máquinas de café</h2>
-      <p>Vendemos repuestos para máquinas de café y de vending. Contanos la marca y el modelo de tu máquina y te confirmamos disponibilidad. A la derecha, algunos ejemplos de lo que podés consultar.</p>
+      <p>Vendemos repuestos para máquinas de café y de vending. Contanos la marca y el modelo de tu máquina y te confirmamos disponibilidad. Algunos ejemplos de lo que podés consultar:</p>
       <button class="btn" data-consulta="Repuestos para máquina de café">Consultar repuestos</button>
     </div>
     <ul class="tags" aria-label="Ejemplos de repuestos por los que podés consultar">
@@ -168,6 +204,7 @@
       <p><b>WhatsApp</b><br><a href="https://wa.me/595986217368">+595 986 217 368</a></p>
       <p><b>Correo</b><br><a href="mailto:marv@tecnocafepy.com">marv@tecnocafepy.com</a></p>
       <p><b>Instagram</b><br><a href="https://www.instagram.com/tecnocafepy/" rel="noopener">@tecnocafepy</a></p>
+      <p><b>Facebook</b><br><a href="https://www.facebook.com/profile.php?id=61564853818471" rel="noopener">TecnoCafe</a></p>
     </div>
   </div>
 </section>
@@ -177,11 +214,11 @@
 <footer>
   <div class="wrap">
     <span>© <span id="y"></span> TecnoCafe · Paraguay</span>
-    <a href="https://wa.me/595986217368">WhatsApp +595 986 217 368</a>
+    <span><a href="https://wa.me/595986217368">WhatsApp</a> · <a href="https://www.instagram.com/tecnocafepy/" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=61564853818471" rel="noopener">Facebook</a> · <a href="mailto:marv@tecnocafepy.com">Correo</a></span>
   </div>
 </footer>
 
-<a class="wa-float" href="#" data-consulta="Consulta general" aria-label="Consultar por WhatsApp">WhatsApp</a>
+<a class="wa-float" href="https://wa.me/595986217368" data-consulta="Consulta general" aria-label="Consultar por WhatsApp">WhatsApp</a>
 
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mt" hidden>
   <div class="panel">
@@ -189,6 +226,7 @@
     <h3 id="mt">Contanos un poco y seguimos por WhatsApp</h3>
     <p class="small" id="interes"></p>
     <form id="f" novalidate>
+      <input type="checkbox" name="botcheck" id="bot" style="display:none" tabindex="-1" autocomplete="off">
       <label>Nombre
         <input name="nombre" autocomplete="name" required>
       </label>
@@ -208,7 +246,7 @@
       </label>
       <p class="err" id="err" role="alert" hidden>Completá nombre, teléfono, ciudad y si vendés café hoy.</p>
       <button class="btn" type="submit">Enviar por WhatsApp</button>
-      <p class="small">Se abre WhatsApp con tus datos para que nos escribas.</p>
+      <p class="small">Tus datos le llegan a nuestro equipo y se abre WhatsApp para que sigamos la conversación.</p>
     </form>
   </div>
 </div>
